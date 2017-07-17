@@ -1,5 +1,5 @@
 # journal entry template for everyday use
-filename: "{cur-year}/{cur-month}/{cur-day}-pr.md"
+filename: "{cur-year}/{cur-month}/{cur-day}-je.md"
 template: |
           ## todo
 
