@@ -1,0 +1,4 @@
+# template for old progress reports
+# no content template (should be used to access old progress reports,
+# not to initialize new ones) 
+filename: "{which-year}/{which-month}/{which-day}-pr.md"

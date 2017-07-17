@@ -1,0 +1,12 @@
+# journal entry for notes on a talk
+filename: "talk/{speaker-last}-{keyword}-{cur-year}-{cur-month}-{cur-day}.md"
+template: |
+          # {talk-title}
+
+          {speaker-first} {speaker-last}
+          {cur-month}-{cur-day}-{cur-year}
+          {location}
+
+          ## synopsis
+
+          ## misc

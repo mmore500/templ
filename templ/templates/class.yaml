@@ -1,0 +1,4 @@
+# class notes entry template
+filename: "class/{class-id}/{cur-month}-{cur-day}.md"
+template: |
+          # {class-id} notes for {cur-month}-{cur-day}-{cur-year}

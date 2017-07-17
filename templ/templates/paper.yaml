@@ -1,0 +1,12 @@
+# entry for notes on a paper
+filename: "paper/{author-last}-{keyword}-{pub-year}.md"
+template: |
+          # {paper-title}
+
+          {author-last}
+          {pub-year}
+          created: {cur-month}-{cur-day}-{cur-year}
+
+          ## synopsis
+
+          ## misc

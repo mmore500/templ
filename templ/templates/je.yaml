@@ -1,0 +1,8 @@
+# journal entry template for everyday use
+filename: "{cur-year}/{cur-month}/{cur-day}-pr.md"
+template: |
+          ## todo
+
+          ## done
+
+          ## misc

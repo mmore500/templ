@@ -1,0 +1,10 @@
+filename: "{cur-year}/{cur-month}/{cur-day}-pr.md"
+template: |
+  # {cur-author} progress report {cur-month}-{cur-day}-{cur-year}
+  ## work from last week
+
+  ## work for next week
+
+  ## obstacles
+
+  ## agenda
