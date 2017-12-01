@@ -1,0 +1,6 @@
+# template for old blog draft
+# no content template (should be used to access old bblog drafts,
+# not to initialize new ones)
+filename: "blog/{keyword}-{which-month}-{which-year}.md"
+template: |
+          # {article-title}
