@@ -9,6 +9,8 @@ Multiple entry types are supported.
 Entry types are defined using YAML files.
 Existing entry types can be modified and additional entry types can be defined by modifying or adding YAML templates to `templ/templates`.
 
+Take a look at an example journal made with templ [here](https://github.com/mmore500/templ/tree/example-journal).
+
 ## Usage
 Basic usage is as follows.
 ```
