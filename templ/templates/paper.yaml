@@ -5,7 +5,7 @@ template: |
 
           {author-last}
           {pub-year}
-          created: {cur-month}-{cur-day}-{cur-year}
+          created: {cur-month:02d}-{cur-day:02d}-{cur-year}
 
           ## synopsis
 

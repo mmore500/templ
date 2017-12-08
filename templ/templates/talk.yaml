@@ -1,10 +1,10 @@
 # journal entry for notes on a talk
-filename: "talk/{speaker-last}-{keyword}-{cur-year}-{cur-month}-{cur-day}.md"
+filename: "talk/{speaker-last}-{keyword}-{cur-year}-{cur-month:02d}-{cur-day:02d}.md"
 template: |
           # {talk-title}
 
           {speaker-first} {speaker-last}
-          {cur-month}-{cur-day}-{cur-year}
+          {cur-month:02d}-{cur-day:02d}-{cur-year}
           {location}
 
           ## synopsis
