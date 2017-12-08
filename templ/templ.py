@@ -29,7 +29,7 @@ format_dict = Request({
     'cur-day' : d.day,
     'cur-month' : d.month,
     'cur-year' : d.year,
-    'cur-author' : 'Matthew Moreno'
+    'cur-author' : 'Your Name Here'
     })
 
 
