@@ -4,6 +4,7 @@ A script to initialize journal entries using a templating system.
 File content and file path are both constructed from a template that:
 * programmatically auto-populates certain fields like `cur-day` or `cur-month`, and
 * prompts the user for values for other fields like `speaker-last` or `title`.
+
 (The fields that the system will populate for an entry type are defined within that entry type's template file.)
 Multiple entry types are supported.
 Entry types are defined using YAML files.
