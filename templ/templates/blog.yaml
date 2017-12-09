@@ -1,4 +1,4 @@
 # entry for notes on a paper
-  filename: "blog/{keyword}-{cur-month:02d}-{cur-year}.md"
+filename: "blog/{cur-month:02d}-{cur-year}-{keyword}.md"
 template: |
           # {article-title}
