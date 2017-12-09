@@ -1,0 +1,8 @@
+# journal entry for notes on a meeting
+filename: "meet/{cur-year}-{cur-month:02d}-{cur-day:02d}-{slug}.md"
+template: |
+          # {slug} meeting for {cur-month:02d}-{cur-day:02d}-{cur-year}
+
+          ## rundown
+
+          ## misc
