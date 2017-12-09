@@ -12,6 +12,8 @@ Existing entry types can be modified and additional entry types can be defined b
 
 Take a look at an example journal made with templ [here](https://github.com/mmore500/templ/tree/example-journal).
 
+Take a look at an example note-taking system made with templ [here](https://github.com/mmore500/templ/tree/example-notes).
+
 ## Usage
 Basic usage is as follows.
 ```
