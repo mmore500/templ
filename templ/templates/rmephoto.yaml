@@ -1,0 +1,24 @@
+# readme for edited phtotos
+filename: "README.md"
+template: |
+          # {year}-{month:02d}-{day:02d}-{client-last:l}_{client-first:l}
+
+          {month:02d}-{day:02d}-{year}
+
+          {location}
+
+          {client-first:c} {client-last:c}
+
+          ## description
+          {description}
+
+          ## Contact
+          {cur-author}
+
+          email: [{cur-author-email}](mailto:{cur-author-email})
+
+          phone: {cur-author-phone}
+
+          web: [{cur-author-website}]({cur-author-website})
+
+          generated {cur-month:02d}-{cur-day:02d}-{cur-year}
