@@ -5,6 +5,23 @@
 
 from .warn import warn
 
+class CustomFormatStr(str):
+    def __format__(self, fmt):
+        if fmt and fmt[0] == 'u':
+            s = self.upper()
+            fmt = fmt[1:]
+        elif fmt and fmt[0] == 'l':
+            s = self.lower()
+            fmt = fmt[1:]
+        elif fmt and fmt[0] == 'c':
+            s = self.title()
+            fmt = fmt[1:]
+        else:
+            s = str(self)
+
+        return s.__format__(fmt)
+
+
 class Request(dict):
 
     def __missing__(self, key):
@@ -28,7 +45,9 @@ class Request(dict):
                 res = int(res)
         # if string is not numeric, conversion fails and no change made to res
         except ValueError:
-            pass
+            # cast to type CustomFormatStr so that custom formatting
+            # can be applied to string components in the templates
+            res = CustomFormatStr(res)
 
 
         # store answer for future use and return answer
