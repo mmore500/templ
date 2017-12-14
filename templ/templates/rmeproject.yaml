@@ -1,0 +1,12 @@
+# readme for projects
+filename: "README.md"
+template: |
+          # {project-name}
+
+          {description}
+
+          ## Contact
+
+          {cur-author}
+
+          [{author-email}](mailto:{author-email})
