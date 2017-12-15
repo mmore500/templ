@@ -65,11 +65,13 @@ ready for me to take notes on all of the crazy things undergraduates think about
 
 You can do other cool things with fancy bash tricks.
 Remove the entry file.
-Compile the entry file to a PDF with pandoc!
-Remember, if the templated path already exists, no changes are made to the file living there.
+Compile the entry file to a PDF with pandoc.
+Put the entry under version control.
+Remember, if the templated path already exists, no changes are made to the file living there when templ is called.
 ```
 rm $(templ pr)
 pandoc -o out.pdf $(templ je)
+git add $(templ pr)
 ```
 
 You could also do it this way if, for some reason, you really wanted to.
@@ -91,7 +93,7 @@ This way, you can easily review HTML renderings of your markdown notes on Github
 
 ## Installation
 You will need a python package manager to install this package.
-I use PIP.
+I use pip.
 ```
 git clone https://github.com/mmore500/templ.git
 pip3 install ./templ
@@ -101,11 +103,31 @@ pip3 install ./templ
 You can add your own templates or modify existing templates in `templ/templates`.
 These templates use standard Python string formatting.
 The user will be prompted at the command line to supply fields that aren't written into the `format_dict` in `templ/templ.py`.
+For example, here is a reproduction of the template file `templ/templates/talk.yaml` that produced the example talk notes above.
+```
+# journal entry for notes on a talk
+filename: "talk/{speaker-last}-{keyword}-{cur-year}-{cur-month:02d}-{cur-day:02d}.md"
+template: |
+          # {talk-title}
 
-Bonus points: fork this repo, and change the format dict to use your name instead of "Your Name Here" for the field `cur_author`.
+          {speaker-first} {speaker-last}
+          {cur-month:02d}-{cur-day:02d}-{cur-year}
+          {location}
+
+          ## synopsis
+
+          ## misc
+
+```
+Note the integer formatting employed (`{cur-day:02d}` and `{cur-day:02d}`)  that prepends one digit months and days with a zero.
+Note also that the base filename of the template file determines the argument that should be provided to use the template.
+For example, this template filename is `talk.yaml` so it is accessed via `templ talk`.
+So if you wanted to make a template for your trainspotting notes, you would just add a file `templ/templates/train.yaml` and access it via `templ train`.
+
+For bonus points, fork this repo, and change the format dict to use your name instead of "Your Name Here" for the field `cur-author`, your email instead of "Your Email Here" for the field `cur-author-email`, etc.
 If you think you might eventually want to put in a pull request, be sure to branch away from master before committing this change.
 
-You will need to reinstall the package for any changes you make to take effect.
+**Important:** You will need to reinstall the package for any changes you make to take effect.
 ```
 pip3 install ./templ --upgrade
 ```
