@@ -29,10 +29,10 @@ format_dict = Request({
     'cur-day' : d.day,
     'cur-month' : d.month,
     'cur-year' : d.year,
-    'cur-author' : 'Your Name Here',
-    'cur-author-email' : 'Your Email Here',
-    'cur-author-phone' : 'Your Phone Here',
-    'cur-author-website' : 'Your Web Address Here'
+    'cur-author' : 'Matthew Andres Moreno',
+    'cur-author-email' : 'mmore500@gmail.com',
+    'cur-author-phone' : '(541) 740 6595',
+    'cur-author-website' : 'https://mmore500.github.io'
     })
 
 
