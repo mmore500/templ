@@ -1,0 +1,20 @@
+# readme for edited phtotos
+filename: "Makefile"
+template: |
+          .RECIPEPREFIX = >
+          IMAGEFILES = $(sort $(wildcard *.jpg) $(wildcard *.JPG) $(wildcard *.dng) $(wildcard *.DNG))
+
+          # get the basename of the containing directory
+          # this will be used to name othe output document
+          BUILD_DIR := $(shell basename $(abspath $(dir $(lastword $(MAKEFILE_LIST)))))
+
+          all: contact-sheet.pdf $(BUILD_DIR)-csheet.pdf
+
+          contact-sheet.pdf:
+          > montage -verbose -label '%f' -font Helvetica -pointsize 10 -background '#000000' -fill 'gray' -colorspace sRGB -define jpeg:size=200x200 -geometry 200x200+12+12 -auto-orient -gamma 2 $(IMAGEFILES) contact-sheet.pdf
+
+          $(BUILD_DIR)-csheet.pdf: contact-sheet.pdf
+          > cp contact-sheet.pdf $(BUILD_DIR)-csheet.pdf
+
+          clean:
+          > rm README.md contact-sheet.pdf $(BUILD_DIR)-csheet.pdf
