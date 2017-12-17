@@ -17,4 +17,4 @@ template: |
           > cp contact-sheet.pdf $(BUILD_DIR)-csheet.pdf
 
           clean:
-          > rm README.md contact-sheet.pdf $(BUILD_DIR)-csheet.pdf
+          > rm contact-sheet.pdf $(BUILD_DIR)-csheet.pdf
