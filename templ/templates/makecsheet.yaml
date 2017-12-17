@@ -11,7 +11,7 @@ template: |
           all: contact-sheet.pdf $(BUILD_DIR)-csheet.pdf
 
           contact-sheet.pdf:
-          > montage -verbose -label '%f' -font Helvetica -pointsize 10 -background '#000000' -fill 'gray' -colorspace sRGB -define jpeg:size=200x200 -geometry 200x200+12+12 -auto-orient -gamma 2 $(IMAGEFILES) contact-sheet.pdf
+          > montage -verbose -label '%f' -font Helvetica -pointsize 10 -background '#000000' -fill 'gray' -colorspace sRGB -define jpeg:size=200x200 -geometry 200x200+12+12 -auto-orient -gamma {gamma-val} $(IMAGEFILES) contact-sheet.pdf
 
           $(BUILD_DIR)-csheet.pdf: contact-sheet.pdf
           > cp contact-sheet.pdf $(BUILD_DIR)-csheet.pdf
