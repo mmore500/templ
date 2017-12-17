@@ -1,0 +1,17 @@
+# readme for own phtotos
+filename: "README.md"
+template: |
+          # {year}-{month:02d}-{raw-or-edit}
+
+          My photos from {month:02d}-{year}.
+
+          ## Contact
+          {cur-author}
+
+          email: [{cur-author-email}](mailto:{cur-author-email})
+
+          phone: {cur-author-phone}
+
+          web: [{cur-author-website}]({cur-author-website})
+
+          generated {cur-month:02d}-{cur-day:02d}-{cur-year}
