@@ -18,7 +18,7 @@ setup(
     entry_points = {
         "console_scripts": ['templ = templ.templ:main']
         },
-    version = "0.6.0",
+    version = "0.6.1",
     description = "A templating tool for maintaining a journal or notes.",
     long_description = long_descr,
     author = "Matthew Andres Moreno",
