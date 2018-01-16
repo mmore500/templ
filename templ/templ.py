@@ -46,6 +46,9 @@ def parse_args(arguments):
     entry_type_default = 'null'
     parser.add_argument('entry_type', help="Entry type", type=str, default=entry_type_default)
 
+    # argument given describes whether the full path (vs. the relative path) should be returned
+    parser.add_argument('--full-path', action='store_true', default=False, dest="full_path", help="Full path flag")
+
     args = parser.parse_args()
 
     # warn user if using default arguments
@@ -84,11 +87,15 @@ def gen_entry_filename(args, entry_type_data):
     # if template YAML file describes a filename for the entry then use it,
     # otherwise use default
     # either way, format the entry filename with format_dict
-    entry_filename = os.getcwd() + '/' + (
+    entry_filename = (
         entry_type_data['filename']
         if entry_type_data and 'filename' in entry_type_data
         else default_entry_filename
         ).format_map(format_dict)
+
+    # if full path requested, prepend current directory path
+    if args.full_path:
+        entry_filename = os.path.join(os.getcwd(), entry_filename)
 
     return entry_filename
 
