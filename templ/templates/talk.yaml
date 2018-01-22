@@ -4,7 +4,9 @@ template: |
           # {talk-title}
 
           {speaker-first} {speaker-last}
+
           {cur-month:02d}-{cur-day:02d}-{cur-year}
+
           {location}
 
           ## synopsis
