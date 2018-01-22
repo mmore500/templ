@@ -118,7 +118,10 @@ def main():
         # initialize the entry only if content template was described
         if template:
             # make directory if it doesn't already exist
-            os.makedirs(os.path.dirname(entry_filename), exist_ok=True)
+            if os.path.dirname(entry_filename):
+                os.makedirs(os.path.dirname(entry_filename), exist_ok=True)
+
+            # write the content template
             with open(entry_filename, "a+") as f:
                 f.write(template.format_map(format_dict))
 
