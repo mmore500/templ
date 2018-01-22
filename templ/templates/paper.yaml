@@ -1,5 +1,5 @@
 # entry for notes on a paper
-filename: "paper/{author-last}-{keyword}-{pub-year}.md"
+filename: "paper/{author-last:l}-{keyword:l}-{pub-year}.md"
 template: |
           # {paper-title}
 

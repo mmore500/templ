@@ -1,4 +1,4 @@
 # journal entry for notes on a talk
 # no content template (should be used to access old talk notes,
 # not to initialize new ones)
-filename: "talk/{speaker-last}-{keyword}-{which-year}-{which-month:02d}-{which-day:02d}.md"
+filename: "talk/{speaker-last:l}-{keyword:l}-{which-year}-{which-month:02d}-{which-day:02d}.md"

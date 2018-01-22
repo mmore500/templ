@@ -1,5 +1,5 @@
 # journal entry for notes on a meeting
-filename: "meet/{cur-year}-{cur-month:02d}-{cur-day:02d}-{slug}.md"
+filename: "meet/{cur-year}-{cur-month:02d}-{cur-day:02d}-{slug:l}.md"
 template: |
           # {slug} meeting for {cur-month:02d}-{cur-day:02d}-{cur-year}
 
