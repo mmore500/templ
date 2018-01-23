@@ -73,7 +73,9 @@ I got a new atom tab pointed at `talk/Wiser-conceptions-randomness-2017-09-29.md
 # Student conceptions about randomness and mutation
 
 Michael Wiser
+
 09-29-2017
+
 BEACON Seminar
 
 ## synopsis
@@ -219,7 +221,9 @@ template: |
           # {talk-title}
 
           {speaker-first} {speaker-last}
+
           {cur-month:02d}-{cur-day:02d}-{cur-year}
+          
           {location}
 
           ## synopsis
