@@ -50,13 +50,13 @@ def parse_args(arguments):
 
     # argument given describes the type of entry for the day
     entry_type_default = 'null'
-    parser.add_argument('entry_type', help="Entry type", type=str, default=entry_type_default)
+    parser.add_argument('entry_type', help="entry type (specify which yaml template file to use)", type=str, default=entry_type_default)
 
     # argument given describes whether the full path (vs. the relative path) should be returned
-    parser.add_argument('--full-path', action='store_true', default=False, dest="full_path", help="Full path flag")
+    parser.add_argument('--full-path', action='store_true', default=False, dest="full_path", help="return full path on stdout (instead of relative path)")
 
     # argument given describes whether all
-    parser.add_argument('-m', "--manual-fill", action='store_true', default=False, dest="manual_fill", help="Flag to prevent automatic fill-in of template fields")
+    parser.add_argument('-m', "--manual-fill", action='store_true', default=False, dest="manual_fill", help="prevent automatic fill-in of template fields (manually fill in all fields)")
 
     args = parser.parse_args()
 

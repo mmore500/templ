@@ -27,7 +27,17 @@ pip3 install ./templ
 ## Usage
 Basic usage is as follows.
 ```
-templ [entry type]
+usage: templ [-h] [--full-path] [-m] entry_type
+
+positional arguments:
+  entry_type         entry type (specify which yaml template file to use)
+
+
+optional arguments:
+  -h, --help         show this help message and exit
+  --full-path        return full path on stdout (instead of relative path)
+  -m, --manual-fill  prevent automatic fill-in of template fields (manually
+                     fill in all fields)
 ```
 If an entry file does not already exist, an appropriate templated file is initialized.
 
