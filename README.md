@@ -95,7 +95,7 @@ cur-month > 1
 cur-day > 1
 ~~~
 
-opens a new atom tab pointed at my existing file `1970/1/1-je.md` initialized with
+opens a new atom tab pointed at my existing file `1970/1/1-je.md`
 
 ~~~
 ## todo
