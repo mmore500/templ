@@ -25,7 +25,7 @@ from .warn import warn
 
 # initialize request formatting dict
 d = datetime.datetime.now()
-format_dict = Request({
+auto_dict = Request({
     'cur-second' : d.second,
     'cur-minute' : d.minute,
     'cur-hour' : d.hour,
@@ -55,6 +55,9 @@ def parse_args(arguments):
     # argument given describes whether the full path (vs. the relative path) should be returned
     parser.add_argument('--full-path', action='store_true', default=False, dest="full_path", help="Full path flag")
 
+    # argument given describes whether all
+    parser.add_argument('-m', "--manual-fill", action='store_true', default=False, dest="manual_fill", help="Flag to prevent automatic fill-in of template fields")
+
     args = parser.parse_args()
 
     # warn user if using default arguments
@@ -83,7 +86,7 @@ def read_yaml(args):
 
     return entry_type_data
 
-def gen_entry_filename(args, entry_type_data):
+def gen_entry_filename(args, format_dict, entry_type_data):
 
     # generate filename for entry
     default_entry_filename = (
@@ -109,6 +112,8 @@ def gen_entry_filename(args, entry_type_data):
 def main():
     args = parse_args(sys.argv[1:])
 
+    format_dict = Request() if args.manual_fill else auto_dict
+
     entry_type_data = read_yaml(args)
 
     append = (
@@ -123,7 +128,7 @@ def main():
         else None
         )
 
-    entry_filename = gen_entry_filename(args, entry_type_data)
+    entry_filename = gen_entry_filename(args, format_dict, entry_type_data)
 
     # if entry file doesn't exist, initialize with content template
     # if content template is described in template YAML file

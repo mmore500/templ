@@ -1,4 +1,0 @@
-# template for old blog draft
-# no content template (should be used to access old blog drafts,
-# not to initialize new ones)
-filename: "blog/{cur-year}-{cur-month:02d}-{keyword:l}.md"

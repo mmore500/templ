@@ -1,4 +1,0 @@
-# template for old journal entries
-# no content template (should be used to access old journal entries,
-# not to initialize new ones)
-filename: "{which-year}/{which-month:02d}/{which-day:02d}-je.md"
