@@ -1,0 +1,2 @@
+# path template for throwing in PDF files
+filename: "{cur-year}/{cur-month:02d}/{cur-day:02d}-pd.pdf"

@@ -24,11 +24,17 @@ from .request import Request
 from .warn import warn
 
 # initialize request formatting dict
-d = datetime.date.today()
+d = datetime.datetime.now()
 format_dict = Request({
+    'cur-second' : d.second,
+    'cur-minute' : d.minute,
+    'cur-hour' : d.hour,
     'cur-day' : d.day,
     'cur-month' : d.month,
     'cur-year' : d.year,
+    'recent-mon-day' : (d - datetime.timedelta(days=d.weekday())).day,
+    'recent-mon-month' : (d - datetime.timedelta(days=d.weekday())).month,
+    'recent-mon-year' : (d - datetime.timedelta(days=d.weekday())).year,
     'cur-author' : 'Your Name Here',
     'cur-author-email' : 'Your Email Here',
     'cur-author-phone' : 'Your Phone Here',
@@ -105,25 +111,41 @@ def main():
 
     entry_type_data = read_yaml(args)
 
+    append = (
+        entry_type_data['append'].format_map(format_dict)
+        if entry_type_data and 'append' in entry_type_data
+        else None
+        )
+
+    template = (
+        entry_type_data['template'].format_map(format_dict)
+        if entry_type_data and 'template' in entry_type_data
+        else None
+        )
+
     entry_filename = gen_entry_filename(args, entry_type_data)
 
     # if entry file doesn't exist, initialize with content template
     # if content template is described in template YAML file
-    if not os.path.isfile(entry_filename):
-        template = (
-            entry_type_data['template'].format_map(format_dict)
-            if entry_type_data and 'template' in entry_type_data
-            else None
-            )
-        # initialize the entry only if content template was described
-        if template:
-            # make directory if it doesn't already exist
-            if os.path.dirname(entry_filename):
-                os.makedirs(os.path.dirname(entry_filename), exist_ok=True)
+    # initialize the entry only if content template was described
+    if template and not os.path.isfile(entry_filename) and not os.path.isdir(entry_filename):
 
-            # write the content template
-            with open(entry_filename, "a+") as f:
-                f.write(template.format_map(format_dict))
+        # make directory if it doesn't already exist
+        if os.path.dirname(entry_filename):
+            os.makedirs(os.path.dirname(entry_filename), exist_ok=True)
+
+        # write the content template
+        with open(entry_filename, "a+") as f:
+            f.write(template.format_map(format_dict))
+
+
+    # append the entry only if content template was described
+    elif append and not os.path.isdir(entry_filename):
+
+        # write the content template
+        with open(entry_filename, "a+") as f:
+            f.write(append.format_map(format_dict))
+
 
     # write filename to stdout to allow for nesting of this script
     # into other bash commands

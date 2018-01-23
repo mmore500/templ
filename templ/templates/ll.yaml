@@ -1,0 +1,6 @@
+# labbook log entry
+filename: "labbook/{recent-mon-year}/{recent-mon-month:02d}-{recent-mon-day:02d}-ll.md"
+template: |
+          # lab log {recent-mon-year}-{recent-mon-month:02d}-{recent-mon-day:02d}
+
+          ## {cur-year}-{cur-month:02d}-{cur-day:02d} {cur-hour:02d}:{cur-minute:02d}
