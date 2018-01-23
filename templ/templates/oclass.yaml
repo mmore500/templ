@@ -1,4 +1,0 @@
-# template for old class notes
-# no content template (should be used to access old class notes,
-# not to initialize new ones)
-filename: "class/{class-id:l}/{which-month:02d}-{which-day:02d}.md"

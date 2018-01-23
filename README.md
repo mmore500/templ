@@ -14,10 +14,30 @@ Take a look at an example journal made with templ [here](https://github.com/mmor
 
 Take a look at an example note-taking system made with templ [here](https://github.com/mmore500/templ/tree/example-notes).
 
+You can read more about why I designed templ and how templ works internally [here](https://mmore500.github.io/2018/01/21/my-record-keeping-setup.html).
+
+## Installation
+You will need a python package manager to install this package.
+I use pip.
+```
+git clone https://github.com/mmore500/templ.git
+pip3 install ./templ
+```
+
 ## Usage
 Basic usage is as follows.
 ```
-templ [entry type]
+usage: templ [-h] [--full-path] [-m] entry_type
+
+positional arguments:
+  entry_type         entry type (specify which yaml template file to use)
+
+
+optional arguments:
+  -h, --help         show this help message and exit
+  --full-path        return full path on stdout (instead of relative path)
+  -m, --manual-fill  prevent automatic fill-in of template fields (manually
+                     fill in all fields)
 ```
 If an entry file does not already exist, an appropriate templated file is initialized.
 
@@ -53,7 +73,9 @@ I got a new atom tab pointed at `talk/Wiser-conceptions-randomness-2017-09-29.md
 # Student conceptions about randomness and mutation
 
 Michael Wiser
+
 09-29-2017
+
 BEACON Seminar
 
 ## synopsis
@@ -62,6 +84,103 @@ BEACON Seminar
 
 ```
 ready for me to take notes on all of the crazy things undergraduates think about randomness.
+
+Want to add an image to your journal?
+Great!
+Say you're working on your journal entry.
+
+`journal/2018/01/21-je.md`:
+
+~~~
+## todo
+* nothing
+
+## done
+* drinks on the beach
+
+## notes
+I wrote this content.
+I'm using my favorite text editor so I'm happy and stuff.
+
+:) :) :) :) :) :)
+
+Okay, time to put an image in.
+
+~~~
+
+Bring back up your terminal.
+
+~~~
+mkdir $(templ jd)
+mv doge.jpg $(templ jd)
+templ ji
+filename > doge.jpg
+~~~
+
+Now we have our image situated at `journal/2018/01/21-img/doge.jpg`.
+When you switch back to your open file `journal/2018/01/21-je.md`, you'll find it with the following addition.
+
+~~~
+## todo
+* nothing
+
+## done
+* drinks on the beach
+
+## notes
+I wrote this content.
+I'm using my favorite text editor so I'm happy and stuff.
+
+:) :) :) :) :) :)
+
+Okay, time to put an image in.
+
+![](21-img/doge.jpg)
+
+~~~
+
+You can keep typing.
+
+~~~
+## todo
+* nothing
+
+## done
+* drinks on the beach
+
+## notes
+I wrote this content.
+I'm using my favorite text editor so I'm happy and stuff.
+
+:) :) :) :) :) :)
+
+Okay, time to put an image in.
+
+![](21-img/doge.jpg)
+
+Wow, much amaze.
+
+~~~
+
+Here's the final rendered result.
+
+> ## todo
+> * nothing
+>
+> ## done
+> * drinks on the beach
+>
+> ## notes
+> I wrote this content.
+> I'm using my favorite text editor so I'm happy and stuff.
+>
+>  :) :) :) :) :) :)
+>
+> Okay, time to put an image in.
+>
+> ![](http://devosoft.org/wp-content/uploads/2018/01/doge.jpg)
+>
+>  Wow, much amaze.
 
 You can do other cool things with fancy bash tricks.
 Remove the entry file.
@@ -90,15 +209,6 @@ git push origin master
 ```
 This way, you can easily review HTML renderings of your markdown notes on Github!
 
-
-## Installation
-You will need a python package manager to install this package.
-I use pip.
-```
-git clone https://github.com/mmore500/templ.git
-pip3 install ./templ
-```
-
 ## Personalization
 You can add your own templates or modify existing templates in `templ/templates`.
 These templates use standard Python string formatting.
@@ -111,7 +221,9 @@ template: |
           # {talk-title}
 
           {speaker-first} {speaker-last}
+
           {cur-month:02d}-{cur-day:02d}-{cur-year}
+          
           {location}
 
           ## synopsis

@@ -24,11 +24,17 @@ from .request import Request
 from .warn import warn
 
 # initialize request formatting dict
-d = datetime.date.today()
-format_dict = Request({
+d = datetime.datetime.now()
+auto_dict = Request({
+    'cur-second' : d.second,
+    'cur-minute' : d.minute,
+    'cur-hour' : d.hour,
     'cur-day' : d.day,
     'cur-month' : d.month,
     'cur-year' : d.year,
+    'recent-mon-day' : (d - datetime.timedelta(days=d.weekday())).day,
+    'recent-mon-month' : (d - datetime.timedelta(days=d.weekday())).month,
+    'recent-mon-year' : (d - datetime.timedelta(days=d.weekday())).year,
     'cur-author' : 'Matthew Andres Moreno',
     'cur-author-email' : 'mmore500@gmail.com',
     'cur-author-phone' : '(541) 740 6595',
@@ -44,10 +50,13 @@ def parse_args(arguments):
 
     # argument given describes the type of entry for the day
     entry_type_default = 'null'
-    parser.add_argument('entry_type', help="Entry type", type=str, default=entry_type_default)
+    parser.add_argument('entry_type', help="entry type (specify which yaml template file to use)", type=str, default=entry_type_default)
 
     # argument given describes whether the full path (vs. the relative path) should be returned
-    parser.add_argument('--full-path', action='store_true', default=False, dest="full_path", help="Full path flag")
+    parser.add_argument('--full-path', action='store_true', default=False, dest="full_path", help="return full path on stdout (instead of relative path)")
+
+    # argument given describes whether all
+    parser.add_argument('-m', "--manual-fill", action='store_true', default=False, dest="manual_fill", help="prevent automatic fill-in of template fields (manually fill in all fields)")
 
     args = parser.parse_args()
 
@@ -77,7 +86,7 @@ def read_yaml(args):
 
     return entry_type_data
 
-def gen_entry_filename(args, entry_type_data):
+def gen_entry_filename(args, format_dict, entry_type_data):
 
     # generate filename for entry
     default_entry_filename = (
@@ -103,24 +112,45 @@ def gen_entry_filename(args, entry_type_data):
 def main():
     args = parse_args(sys.argv[1:])
 
+    format_dict = Request() if args.manual_fill else auto_dict
+
     entry_type_data = read_yaml(args)
 
-    entry_filename = gen_entry_filename(args, entry_type_data)
+    append = (
+        entry_type_data['append'].format_map(format_dict)
+        if entry_type_data and 'append' in entry_type_data
+        else None
+        )
+
+    template = (
+        entry_type_data['template'].format_map(format_dict)
+        if entry_type_data and 'template' in entry_type_data
+        else None
+        )
+
+    entry_filename = gen_entry_filename(args, format_dict, entry_type_data)
 
     # if entry file doesn't exist, initialize with content template
     # if content template is described in template YAML file
-    if not os.path.isfile(entry_filename):
-        template = (
-            entry_type_data['template'].format_map(format_dict)
-            if entry_type_data and 'template' in entry_type_data
-            else None
-            )
-        # initialize the entry only if content template was described
-        if template:
-            # make directory if it doesn't already exist
+    # initialize the entry only if content template was described
+    if template and not os.path.isfile(entry_filename) and not os.path.isdir(entry_filename):
+
+        # make directory if it doesn't already exist
+        if os.path.dirname(entry_filename):
             os.makedirs(os.path.dirname(entry_filename), exist_ok=True)
-            with open(entry_filename, "a+") as f:
-                f.write(template.format_map(format_dict))
+
+        # write the content template
+        with open(entry_filename, "a+") as f:
+            f.write(template.format_map(format_dict))
+
+
+    # append the entry only if content template was described
+    elif append and not os.path.isdir(entry_filename):
+
+        # write the content template
+        with open(entry_filename, "a+") as f:
+            f.write(append.format_map(format_dict))
+
 
     # write filename to stdout to allow for nesting of this script
     # into other bash commands

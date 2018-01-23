@@ -1,4 +1,0 @@
-# template for old meetings
-# no content template (should be used to access old meetings,
-# not to initialize new ones)
-filename: "meet/{cur-year}-{cur-month:02d}-{cur-day:02d}-{slug:l}.md"
