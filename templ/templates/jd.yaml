@@ -1,0 +1,2 @@
+# directory template for journal entry image files
+filename: "{cur-year}/{cur-month:02d}/{cur-day:02d}-img"

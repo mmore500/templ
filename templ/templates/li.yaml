@@ -1,0 +1,5 @@
+# directory template for lab book image files
+filename: "labbook/{recent-mon-year}/{recent-mon-month:02d}-{recent-mon-day:02d}-ll.md"
+append: |
+
+        ![](/{recent-mon-month:02d}-{recent-mon-day:02d}-img/{filename})
