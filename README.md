@@ -85,7 +85,32 @@ BEACON Seminar
 ```
 ready for me to take notes on all of the crazy things undergraduates think about randomness.
 
-Want to add an image to your journal?
+If it's no longer the 70's and I want to open that old journal entry from January 1st, 1970, I use the `-m` flag to manually fill *all* fields.
+Performing
+
+~~~
+atom $(templ je -m)
+cur-year > 1970
+cur-month > 1
+cur-day > 1
+~~~
+
+opens a new atom tab pointed at my existing file `1970/1/1-je.md` initialized with
+
+~~~
+## todo
+* buy bell bottoms
+* wear my favorite wide-collar shirt
+
+## done
+* fed my pet rock
+
+## misc
+Just tryna be stayin' alive tbh.
+
+~~~
+
+Want to add an image to your journal entry?
 Great!
 Say you're working on your journal entry.
 
@@ -223,7 +248,7 @@ template: |
           {speaker-first} {speaker-last}
 
           {cur-month:02d}-{cur-day:02d}-{cur-year}
-          
+
           {location}
 
           ## synopsis
