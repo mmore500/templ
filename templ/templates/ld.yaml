@@ -1,2 +1,3 @@
 # labbook directory template
 filename: "labbook/{recent-mon-year}/{recent-mon-month:02d}-{recent-mon-day:02d}-img"
+mkdir: ""

@@ -143,6 +143,10 @@ def main():
         with open(entry_filename, "a+") as f:
             f.write(append.format_map(format_dict))
 
+    # make a directory if that was the described action
+    elif entry_type_data and 'mkdir' in entry_type_data and not os.path.isfile(entry_filename):
+        os.makedirs(entry_filename, exist_ok=True)
+
 
     # write filename to stdout to allow for nesting of this script
     # into other bash commands
