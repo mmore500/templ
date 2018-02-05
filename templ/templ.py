@@ -116,24 +116,14 @@ def main():
 
     entry_type_data = read_yaml(args)
 
-    append = (
-        entry_type_data['append'].format_map(format_dict)
-        if entry_type_data and 'append' in entry_type_data
-        else None
-        )
-
-    template = (
-        entry_type_data['template'].format_map(format_dict)
-        if entry_type_data and 'template' in entry_type_data
-        else None
-        )
-
     entry_filename = gen_entry_filename(args, format_dict, entry_type_data)
 
     # if entry file doesn't exist, initialize with content template
     # if content template is described in template YAML file
     # initialize the entry only if content template was described
-    if template and not os.path.isfile(entry_filename) and not os.path.isdir(entry_filename):
+    if entry_type_data and 'template' in entry_type_data and not os.path.isfile(entry_filename) and not os.path.isdir(entry_filename):
+
+        template = entry_type_data['template'].format_map(format_dict)
 
         # make directory if it doesn't already exist
         if os.path.dirname(entry_filename):
@@ -145,11 +135,17 @@ def main():
 
 
     # append the entry only if content template was described
-    elif append and not os.path.isdir(entry_filename):
+    elif entry_type_data and 'append' in entry_type_data and not os.path.isdir(entry_filename):
+
+        append = entry_type_data['append'].format_map(format_dict)
 
         # write the content template
         with open(entry_filename, "a+") as f:
             f.write(append.format_map(format_dict))
+
+    # make a directory if that was the described action
+    elif entry_type_data and 'mkdir' in entry_type_data and not os.path.isfile(entry_filename):
+        os.makedirs(entry_filename, exist_ok=True)
 
 
     # write filename to stdout to allow for nesting of this script
