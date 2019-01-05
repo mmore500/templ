@@ -28,6 +28,6 @@ setup(
     install_requires=[
           'pyyaml',
      ],
-    author_email = "matthew.andres.moreno@gmail.com",
+    author_email = "m.more500@gmail.com",
     url = "https://github.com/mmore500/templ",
     )
