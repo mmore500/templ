@@ -26,6 +26,9 @@ setup(
         # if any package contains *.yaml fiels, include them:
         '': ['templates/*.yaml'],
     },
+    install_requires=[
+          'pyyaml',
+     ],
     author_email = "matthew.andres.moreno@gmail.com",
     url = "https://github.com/mmore500/templ",
     )
