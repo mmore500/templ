@@ -23,7 +23,6 @@ setup(
     long_description = long_descr,
     author = "Matthew Andres Moreno",
     package_data = {
-        # if any package contains *.yaml fiels, include them:
         '': ['templates/*.yaml'],
     },
     install_requires=[
