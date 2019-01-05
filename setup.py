@@ -23,9 +23,11 @@ setup(
     long_description = long_descr,
     author = "Matthew Andres Moreno",
     package_data = {
-        # if any package contains *.yaml fiels, include them:
         '': ['templates/*.yaml'],
     },
-    author_email = "matthew.andres.moreno@gmail.com",
+    install_requires=[
+          'pyyaml',
+     ],
+    author_email = "m.more500@gmail.com",
     url = "https://github.com/mmore500/templ",
     )
