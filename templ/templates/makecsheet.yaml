@@ -2,7 +2,7 @@
 filename: "Makefile"
 template: |
           .RECIPEPREFIX = >
-          IMAGEFILES = $(sort $(wildcard *.jpg) $(wildcard *.JPG) $(wildcard *.dng) $(wildcard *.DNG))
+          IMAGEFILES = $(sort $(wildcard *.heic) $(wildcard *.HEIC) $(wildcard *.jpg) $(wildcard *.JPG) $(wildcard *.dng) $(wildcard *.DNG))
 
           # get the basename of the containing directory
           # this will be used to name othe output document
