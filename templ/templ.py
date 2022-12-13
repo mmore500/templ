@@ -78,7 +78,7 @@ def read_yaml(args):
 
     if os.path.isfile(template_path):
          with open( template_path, 'r') as stream:
-            entry_type_data = yaml.load(stream)
+            entry_type_data = yaml.load(stream, Loader=yaml.Loader)
 
     else:
         print(template_path)
